@@ -1,5 +1,3 @@
-# Shi Hao He
-
 Data science student at the **University of Macau** (CISC7204 Data Science and Data
 Visualization, CISC7026 Introduction to Deep Learning). I like turning small, messy datasets
 into something you can look at and argue with - and I try to be explicit about what the data
@@ -38,8 +36,16 @@ much can the dates in the dataset actually tell us?
 - **The data dictionary does not hold:** in **62.3%** of rows the "report created" date is
   *earlier* than the incident date, and one incident date is reused 9 times. So I dropped the
   seasonality idea and reported the date problem instead.
+- **The hotspot survives the date problem:** split by date quality, the largest cluster still
+  holds **45.5%** of the date-consistent rows (101) and **40.1%** of the suspicious ones (167),
+  against 42.2% overall - so the concentration is not an artefact of the bad dates.
 - **Limitation:** there is no denominator (patrol effort, protected-area size), so these are
   268 *reports* - the clusters show where incidents were reported, not where poaching is worst.
+
+![The same clusters split by date quality](images/cluster_robustness.png)
+
+*The robustness check: filled markers are rows whose dates are consistent, open markers the ones
+that are not, with the counts annotated per cluster.*
 
 **Status:** completed
 
@@ -47,9 +53,11 @@ much can the dates in the dataset actually tell us?
 
 ## What I want to improve next
 
-Add a proper basemap and protected-area boundaries so the clusters can be checked against the
-parks they fall inside, and replace k-means with a density-based method that does not require
-choosing the number of groups in advance.
+Two things a peer reviewer suggested, and one of my own. From the review: test 2, 4, 5 and 6
+clusters and report how much the 42% share moves (the count of three is still my choice), and add
+the low end of the density scale so a cell with 2 reports does not look as different as it should.
+Mine: add protected-area boundaries and a real basemap so the clusters can be checked against the
+parks they fall inside.
 
 ---
 
