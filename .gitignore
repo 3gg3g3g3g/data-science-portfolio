@@ -1,0 +1,9 @@
+# Portfolio site (GitHub Pages)
+_site/
+.jekyll-cache/
+.sass-cache/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
